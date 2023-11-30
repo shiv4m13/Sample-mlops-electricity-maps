@@ -1,0 +1,12 @@
+pip==23.1.2
+setuptools==67.8.0
+wheel==0.40.0
+mlflow<3,>=2.3
+cloudpickle==2.2.1
+numpy==1.24.3
+pandas==1.5.3
+scikit-learn==1.2.2
+scipy==1.10.1
+typing-extensions
+uvicorn
+fastapi
