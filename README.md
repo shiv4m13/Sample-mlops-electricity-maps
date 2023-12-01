@@ -161,3 +161,17 @@ else:
     # If the response status code is not 200, print an error message with the status code and response text
     print(f"Error: {response.status_code} - {response.text}")
 ```
+
+# Note:
+## Input JSON File Format
+The input JSON file is expected to follow a specific structure with two main components: columns and data. This format is crucial for successful execution of the API request script.
+```
+{
+   "columns": ["column1", "column2", "column3", ...],
+   "data": [
+      [value11, value12, value13, ...],
+      [value21, value22, value23, ...],
+      ...
+   ]
+}
+```
