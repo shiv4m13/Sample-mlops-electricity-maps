@@ -124,3 +124,40 @@ If you find yourself with additional time and resources, exploring Kubernetes fo
 ## Efficient Model Versioning with S3 Buckets
 
 Consider incorporating Amazon S3 buckets into our deployment strategy to store model weights. This enhancement provides a robust solution for efficient model versioning and management. Taking this step can contribute to a more streamlined and organized approach as we handle an increasing number of models.
+
+
+
+## Request Code:
+
+```
+import requests
+import json
+
+# Specify the path to the JSON file containing input data
+json_file_path = "<json_file_path>"
+
+# Read the input data from the JSON file
+with open(json_file_path, 'r') as file:
+    input_data = json.load(file)
+
+# URL of the API endpoint you want to send the request to
+api_url = "https://7yjy2qj96c.execute-api.us-east-1.amazonaws.com/testing2"
+
+# Headers to be included in the request
+headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+# Send a POST request to the specified API endpoint with input data and headers
+response = requests.post(api_url, json=input_data, headers=headers)
+
+# Check the HTTP status code of the response
+if response.status_code == 200:
+    # If the response status code is 200, print the result obtained from the API
+    result = response.json()
+    print("Result:", result)
+else:
+    # If the response status code is not 200, print an error message with the status code and response text
+    print(f"Error: {response.status_code} - {response.text}")
+```
