@@ -63,4 +63,5 @@ jobs:
           ls -al
           docker build -t ${{ secrets.ECR_REPOSITORY_URI }}:$IMAGE_TAG .
           docker push ${{ secrets.ECR_REPOSITORY_URI }}:$IMAGE_TAG
+          # aws lambda update-function-code --function-name testing2 --image-uri ${{ secrets.ECR_REPOSITORY_URI }}:$IMAGE_TAG
           echo "image=${{ secrets.ECR_REPOSITORY_URI }}:$IMAGE_TAG" >> $GITHUB_OUTPUT
