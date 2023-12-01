@@ -35,6 +35,13 @@ jobs:
             exit 1
           fi
 
+  build:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@0e613a0980cbf65ed5b322eb7a1e075d28913a83
         with:
@@ -57,3 +64,10 @@ jobs:
           docker build -t 982715425803.dkr.ecr.us-east-1.amazonaws.com/hello-world:$IMAGE_TAG .
           docker push 982715425803.dkr.ecr.us-east-1.amazonaws.com/hello-world:$IMAGE_TAG
           echo "image=982715425803.dkr.ecr.us-east-1.amazonaws.com/hello-world:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+  test-and-build:
+    runs-on: ubuntu-latest
+    needs: [test, build]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
